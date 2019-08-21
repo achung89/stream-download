@@ -1,0 +1,7 @@
+Test 1: tried fetching 7 gb of data with fetch and stream writing to indexedDB, crashed after 3gb
+  possible causes:
+    1. need to create a writeable stream in order to clear read stream buffer
+    2. db write promises are backfilling promise queue
+    3. gc not happening as often as we think
+    4. chunks are being held in memory somewhere unrelated to 1)
+    5. requests are coming faster than we can read them
